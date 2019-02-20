@@ -8,6 +8,7 @@ public class AttackTrigger : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         Health otherHealth = collision.gameObject.GetComponent<Health>();
 
         //check if the gameObject has Health Component
@@ -16,8 +17,6 @@ public class AttackTrigger : MonoBehaviour {
             //damage the other health
             otherHealth.Damage(_damage);
         }
-            /*// ***Quin, I dont know if this is the best way to do it, if not, please warn me.
-            collision.SendMessageUpwards("Damage", damage);
-            Debug.Log("Attacou");*/
+            
     }
 }

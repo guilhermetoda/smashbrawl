@@ -9,8 +9,10 @@ public class Health : MonoBehaviour
     [SerializeField] private int _currentHealth = 3;
 
     [SerializeField] private GameObject _deathParticlesPrefab;
+    [SerializeField] private GameObject _damageParticlesPrefab;
     //particles duration
     [SerializeField] private float _deathParticlesDuration = 2f;
+    [SerializeField] private float _damageParticlesDuration = 2f;
 
     [SerializeField] private UnityEvent DeathEvent;
     //Creating an event when the character receives damage
@@ -49,6 +51,12 @@ public class Health : MonoBehaviour
         }
         else
         {
+            if (_damageParticlesPrefab != null)
+            {
+                GameObject spawnParticles = Instantiate(_damageParticlesPrefab, transform.position, Quaternion.identity);
+                Destroy(spawnParticles, _damageParticlesDuration);
+            }
+
             if (HitEvent != null)
             {
                 HitEvent.Invoke();

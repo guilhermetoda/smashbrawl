@@ -13,7 +13,7 @@ public class Winner : MonoBehaviour {
         //get the text component
         _text = GetComponent<TextMeshProUGUI>();
     }
-
+    // When the game is over add the Index of the winner player
     public void GameOver()
     {
         if (GameScore.winnerIndex != -1)

@@ -17,7 +17,6 @@ public class Character : MonoBehaviour
 
     //Attacking Parameters
     [Header("Attacking")]
-    [SerializeField] private Collider2D _attackTriggerVolume; // Trigger to check if there is some object colliding the attack
     [SerializeField] private float _attackingCooldown = 0.3f;
 
     [Header("Hit")]
@@ -34,6 +33,7 @@ public class Character : MonoBehaviour
     private bool _isAttacking;         // is the character attacking?
     private bool _isDead; // boolean to check if the character is dying (used in animation)
     private bool _isHit; // is the character being hit?
+    private bool _isDamageTaken; // Check if the damage is already taken in the enemy
 
     private float _hitTimer;
     private float _attackingTimer;
@@ -45,7 +45,7 @@ public class Character : MonoBehaviour
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
         // When the Character Awakes setting the attack trigger volume to false to avoid damage without attack
-        _attackTriggerVolume.enabled = false;
+        //_attackTriggerVolume.enabled = false;
 
         _isDead = false;
         _isHit = false;
@@ -79,7 +79,7 @@ public class Character : MonoBehaviour
 
         //Set Attacking Value
         _animator.SetBool("Attacking", _isAttacking);
-        _animator.SetBool("Hit", _isHit);
+        //_animator.SetBool("Hit", _isHit);
 
 
         //Hit Countdown
@@ -114,7 +114,7 @@ public class Character : MonoBehaviour
         if (_isGrounded && _isTryingToMove)
         {
             _renderer.flipX = _moveInput <= 0f;
-            _attackTriggerVolume.transform.localPosition = new Vector2(-_attackTriggerVolume.transform.localPosition.x, _attackTriggerVolume.transform.localPosition.y);
+            //_attackTriggerVolume.transform.localPosition = new Vector2(-_attackTriggerVolume.transform.localPosition.x, _attackTriggerVolume.transform.localPosition.y);
         }
     }
 
@@ -179,13 +179,13 @@ public class Character : MonoBehaviour
     {
         _isAttacking = true;
         _attackingTimer = _attackingCooldown;
-        _attackTriggerVolume.enabled = true;
+        
     }
 
     protected void StopAttack()
     {
         _isAttacking = false;
-        _attackTriggerVolume.enabled = false;
+        
     }
 
     // Function to get if the character is attacking
@@ -218,5 +218,15 @@ public class Character : MonoBehaviour
         return _isHit;
     }
 
+
+    protected bool GetIsDamageTaken()
+    {
+        return _isDamageTaken;
+    }
+
+    protected void SetIsDamageTaken(bool isDamageTaken)
+    {
+        _isDamageTaken = isDamageTaken;
+    }
 
 }

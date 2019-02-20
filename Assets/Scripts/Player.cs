@@ -10,6 +10,12 @@ public class Player : Character
 
     [Header("Attack")]
     [SerializeField] private AudioClip _swordSound;
+    [SerializeField] private LayerMask _attackingLayers;
+    [SerializeField] private Transform _attackPos;
+    [SerializeField] private float _attackRangeX;
+    [SerializeField] private float _attackRangeY;
+    [SerializeField] private int _damage = 10;
+
 
     private AudioSource _audioSource;
 
@@ -35,9 +41,39 @@ public class Player : Character
         if (!GetIsAttacking() && Input.GetButtonDown("Fire1" + _playerIndex))
         {
             StartAttack();
+            SetIsDamageTaken(false);
             _audioSource = GetComponent<AudioSource>();
             _audioSource.clip = _swordSound;
             _audioSource.Play();
+        }
+
+        if (GetIsAttacking() && !GetIsDamageTaken())
+        {
+            Collider2D[] damageColliders = Physics2D.OverlapBoxAll(_attackPos.position, new Vector2(_attackRangeX, _attackRangeY), _attackingLayers);
+            for (int i=0; i<damageColliders.Length; i++)
+            {
+
+                //Check if the attacker is the player
+                Player playerAttacked = damageColliders[i].GetComponent<Player>();
+                if (playerAttacked != null)
+                {
+                    if (playerAttacked._playerIndex == _playerIndex)
+                    {
+                        // Won't self attack
+                        break;
+                    }
+                }
+                Debug.Log(" ATTACK" );
+                Health otherHealth = damageColliders[i].GetComponent<Health>();
+
+                //check if the gameObject has Health Component
+                if (otherHealth != null)
+                {
+                    //damage the other health
+                    otherHealth.Damage(_damage);
+                }
+            }
+            SetIsDamageTaken(true);
         }
 
         if (GetIsHit())
@@ -74,6 +110,14 @@ public class Player : Character
     {
         base.KillCharacter();
         GameScore.SetPlayerIsDead(_playerIndex);
-        Debug.Log("DEAD");
     }
+
+    // Debug the Attack Radius
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(_attackPos.position, new Vector3(_attackRangeX, _attackRangeY, 1));
+    }
+
 }
+

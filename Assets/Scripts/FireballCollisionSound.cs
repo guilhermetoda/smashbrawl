@@ -13,7 +13,7 @@ public class FireballCollisionSound : MonoBehaviour {
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2d(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

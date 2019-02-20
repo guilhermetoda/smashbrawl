@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// EnergyBall Spawner - Script to spawn the energy ball in a random position
 public class EnergyBallSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _EnergyPrefab; // the Item prefab spawn
+    [SerializeField] private GameObject[] _energyPrefab; // the Item prefab spawn
     [SerializeField] private float _spawnCooldown = 3f; // the time between spawning items
 
     private float currentCooldown = 0;
     private static bool stopSpawning = false;
-
-    // offset to not spawn the item on the ground
-    private float _offsetYPosition = 1.5f;
 
     private void Start()
     {
@@ -67,7 +65,7 @@ public class EnergyBallSpawner : MonoBehaviour
 
         Vector2 spawnPosition = new Vector2(xPosition, yPosition);
         float itemIndex = Random.Range(0, 1);
-        GameObject itemPrefab = _EnergyPrefab[(int)itemIndex];
+        GameObject itemPrefab = _energyPrefab[(int)itemIndex];
 
         Instantiate(itemPrefab, spawnPosition, direction);
     }

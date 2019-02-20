@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour {
 
+    // Player prefabs, each position of the array represents one player
     [SerializeField] GameObject[] _playersPrefab; 
 
     private void Update()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
+        // Check at every frame if there is a player dead
         for (int i=0; i<GameScore._numberOfPlayers; i++)
         {
             // If the player is dead
@@ -22,4 +22,5 @@ public class PlayerRespawn : MonoBehaviour {
 
         }
     }
+
 }
