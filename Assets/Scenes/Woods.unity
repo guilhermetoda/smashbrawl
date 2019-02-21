@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 547711882}
   - component: {fileID: 547711881}
   m_Layer: 8
-  m_Name: FloatingPlatform (1)
+  m_Name: LeftFloatingPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 734449947}
   - component: {fileID: 734449950}
   m_Layer: 8
-  m_Name: FloatingPlatform
+  m_Name: RightFloatingPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1697,7 +1697,7 @@ GameObject:
   - component: {fileID: 1053845070}
   - component: {fileID: 1053845069}
   m_Layer: 8
-  m_Name: FloatingPlatform (2)
+  m_Name: MiddleFloatingPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1875,7 +1875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f05a8f52b5e8413c8ee2a832d4771d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _EnergyPrefab:
+  _energyPrefab:
   - {fileID: 1005451847830334, guid: e0992d4a20b1f4ae3bb11f4d4a50d095, type: 2}
   _spawnCooldown: 3
 --- !u!4 &1180096721
@@ -1944,7 +1944,7 @@ GameObject:
   - component: {fileID: 1405929283}
   - component: {fileID: 1405929282}
   m_Layer: 0
-  m_Name: CloudsFront
+  m_Name: BGCloudsFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2578,7 +2578,7 @@ GameObject:
   - component: {fileID: 1903337201}
   - component: {fileID: 1903337200}
   m_Layer: 0
-  m_Name: CloudsBack
+  m_Name: BGCloudsBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2728,7 +2728,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1926747244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -8.758692, z: 0}
+  m_LocalPosition: {x: 0.8, y: -8.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2746,7 +2746,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.08}
+  m_Offset: {x: 0, y: 0.6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}

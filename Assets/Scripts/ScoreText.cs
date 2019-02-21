@@ -20,6 +20,7 @@ public class ScoreText : MonoBehaviour
     private void Update()
     {
         _text.SetText(GameScore.GetPlayerScore(_playerIndex).ToString());
+        
     }
 
 }

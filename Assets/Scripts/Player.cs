@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class Player : Character
 {
+    //Input variables for the player
     [Header("Input")]
     [SerializeField] private int _playerIndex;
     [SerializeField] private KeyCode _jumpKey;
 
+    // Attack variables
     [Header("Attack")]
+    //Sound of swing the sword
     [SerializeField] private AudioClip _swordSound;
+    // Layers that the player is allowed to attack
     [SerializeField] private LayerMask _attackingLayers;
+    // Gameobject to control the "trigger volume" of the attack, using Overlap Box
     [SerializeField] private Transform _attackPos;
+    // Range of X-Axis of the attack box (overlap box)
     [SerializeField] private float _attackRangeX;
+    // Range of Y-Axis of the attack box (overlap box)
     [SerializeField] private float _attackRangeY;
+    // Amount of damage of each attack
     [SerializeField] private int _damage = 10;
 
-
+    //Audio source to play the swordSound
     private AudioSource _audioSource;
 
     private int collectedGems = 0;
@@ -46,7 +54,7 @@ public class Player : Character
             _audioSource.clip = _swordSound;
             _audioSource.Play();
         }
-
+        // If the player is attacking and the damage hasn't taken yet, this avoid to double,triple or more damage with just one swings
         if (GetIsAttacking() && !GetIsDamageTaken())
         {
             Collider2D[] damageColliders = Physics2D.OverlapBoxAll(_attackPos.position, new Vector2(_attackRangeX, _attackRangeY), _attackingLayers);
@@ -60,12 +68,11 @@ public class Player : Character
                     if (playerAttacked._playerIndex == _playerIndex)
                     {
                         // Won't self attack
-                        break;
+                        continue;
                     }
                 }
-                Debug.Log(" ATTACK" );
-                Health otherHealth = damageColliders[i].GetComponent<Health>();
 
+                Health otherHealth = damageColliders[i].GetComponent<Health>();
                 //check if the gameObject has Health Component
                 if (otherHealth != null)
                 {
@@ -73,6 +80,7 @@ public class Player : Character
                     otherHealth.Damage(_damage);
                 }
             }
+            // Set the damage to not take damage again on the next frame.
             SetIsDamageTaken(true);
         }
 
@@ -92,7 +100,6 @@ public class Player : Character
     {
         if (collision.CompareTag("Gem"))
         {
-            Debug.Log("Gem");
             //Destroy(this);
             Destroy(collision.gameObject);
             collectedGems++;

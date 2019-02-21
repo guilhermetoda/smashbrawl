@@ -243,8 +243,8 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 256
-  _attackingCooldown: 0.5
-  _hitCooldown: 0.5
+  _attackingCooldown: 0.2
+  _hitCooldown: 0.2
   _playerIndex: 1
   _jumpKey: 273
   _swordSound: {fileID: 8300000, guid: 4c42063a93139441d96ae91a43a83d7f, type: 3}

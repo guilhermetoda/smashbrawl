@@ -35,8 +35,8 @@ public class Character : MonoBehaviour
     private bool _isHit; // is the character being hit?
     private bool _isDamageTaken; // Check if the damage is already taken in the enemy
 
-    private float _hitTimer;
-    private float _attackingTimer;
+    private float _hitTimer; // Time of getting hit
+    private float _attackingTimer; // Duration of the attack
 
     private void Awake()
     {
@@ -200,14 +200,14 @@ public class Character : MonoBehaviour
         _hitTimer = _hitCooldown;
     }
 
-
+    // Character has died
     public virtual void KillCharacter()
     {
         _isDead = true;
         _animator.SetBool("Dead", _isDead);
-        Debug.Log("DEAD");
     }
 
+    // Get and sets for isDead and iSDamagetaken, this function are used on the Player class
     protected bool GetIsDead()
     {
         return _isDead;

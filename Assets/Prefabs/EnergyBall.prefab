@@ -26,7 +26,6 @@ GameObject:
   - component: {fileID: 114398593642065394}
   - component: {fileID: 114020202379057564}
   - component: {fileID: 82759427140038764}
-  - component: {fileID: 114713107228879972}
   m_Layer: 0
   m_Name: EnergyBall
   m_TagString: Untagged
@@ -222,18 +221,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _velocity: 20
   _lifeTime: 5
---- !u!114 &114713107228879972
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1005451847830334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc90d09b32e904ae0b88a42b8ffbb2c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioClip: {fileID: 8300000, guid: 23bad5e1a673f4c969a0b23adefe631b, type: 3}
 --- !u!212 &212787173804384944
 SpriteRenderer:
   m_ObjectHideFlags: 1
